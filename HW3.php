@@ -11,13 +11,14 @@ $assoc_array = [
     'Third' => ['zero' => 'C', 'one' => 'C1', 'two' => 'C2']];
 
 
-for ($i = 0; $i < 3; $i++) {
-    for ($j = 0; $j < 3; $j++) {
+for ($i = 0; $i < count($array); $i++) {
+    for ($j = 0; $j < count($array[$i]); $j++) {
         echo "{$array[$i][$j]} ";
     }
     echo '<br>';
 }
 echo "<hr>";
+
 foreach ($assoc_array as $key1 => $index1) {
     echo $key1 . ": <br><div style=\"margin-left:20px\">";
     foreach ($index1 as $key2 => $index2) {
