@@ -4,6 +4,11 @@
 
 if (!function_exists('minimum')) {
 
+    /**
+     * function returns minimum value from array of numbers
+     * @param array ...$num
+     * @return mixed
+     */
     function minimum(...$num)
     {
         print_r($num);
@@ -18,6 +23,6 @@ if (!function_exists('minimum')) {
     }
 }
 
-$value = minimum(4, 5, 6, 2, 1, 4, 3, 1, 2, 1, 4, 7, 8, 8, 4, 3, 1, 12);
+$value = minimum(4, 5, 6, 2, 1, 4, -3, 11, 2, -1, 4, 7, 8, -8, 4, 3, 1, 12);
 
 echo $value;
