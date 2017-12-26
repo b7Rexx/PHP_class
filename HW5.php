@@ -5,6 +5,12 @@ echo '<br>';
 echo str_repeat('apple', '10');
 echo "<br> Ans:";
 if (!function_exists('myStrRepeat')) {
+    /**
+     * function to concatenate the string multiples times as given in argument
+     * @param $item
+     * @param $num
+     * @return string
+     */
     function myStrRepeat($item, $num)
     {
         $str='';
@@ -22,6 +28,11 @@ echo "<hr>";
 echo "No repeated number in the list <br> <pre>";
 
 if(!function_exists('unrepeatedArray')){
+    /**
+     * function to create unique list of array
+     * @param array ...$arr
+     * @return array
+     */
     function unrepeatedArray(...$arr){
         print_r($arr);
         echo '<br> Ans: ';
