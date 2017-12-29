@@ -28,9 +28,9 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
     <?php
     if(isset($_COOKIE['message'])) {
-        echo $_COOKIE['message'];
+        echo "<a class=\"red\">{$_COOKIE['message']}</a>";
     }elseif (isset($_COOKIE['register_success'])){
-        echo $_COOKIE['register_success'];
+        echo "<a class=\"red\">{$_COOKIE['register_success']}</a>";
     }
     ?>
 </div>

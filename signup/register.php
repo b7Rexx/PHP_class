@@ -20,6 +20,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="anchor"><a href="login.php" type="button">Login</a></div>
 <div class="login">
     <form class="loginform" action="register_action.php" method="post">
         <input name="name_register" type="text" placeholder="Username"><br>
@@ -29,7 +30,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     </form>
     <?php
     if (isset($_COOKIE['register_failed'])) {
-        echo $_COOKIE['register_failed'];
+        echo "<a class=\"red\">{$_COOKIE['register_failed']}</a>";
     }
     ?>
 </div>
