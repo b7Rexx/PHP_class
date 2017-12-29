@@ -27,7 +27,9 @@ if (!(isset($_SESSION['username']) && isset($_SESSION['password']))) {
 </form>
 
 <?php
-echo "<pre>";
+/**
+ * Table to show username and password list
+ */
 //$handle = fopen('user_pass.txt','r');
 $read_file = file('user_pass.txt');
 $imp = implode('=username&password=', $read_file);

@@ -50,11 +50,11 @@ CSS Document
     font-style: italic;
 }
 
-.table{
+.table {
     margin: auto 40%;
 }
 
-.admin_list th,td{
+.admin_list th, td {
     border-bottom: 1px solid greenyellow;
     font-size: 20px;
     padding-left: 30px;
