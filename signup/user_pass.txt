@@ -1,3 +1,2 @@
 brexx=username&password=admin
-admin=username&password=admin
 asd=username&password=zxc

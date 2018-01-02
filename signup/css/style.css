@@ -23,7 +23,7 @@ CSS Document
 .login input {
     height: 30px;
     font-size: 16px;
-    width: 200px;
+    width: auto;
     text-align: center;
 }
 
@@ -31,6 +31,12 @@ CSS Document
     padding: 5px;
     width: 60px;
     margin: 10px;
+}
+
+.login i{
+    margin-left: 15px;
+    font-size: 17px;
+    opacity: 0.7;
 }
 
 .logout {
@@ -60,6 +66,14 @@ CSS Document
     padding-left: 30px;
 }
 
+.admin_list a{
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    color:red;
+
+}
+
 .red {
     background-color: transparent;
     color: red;
@@ -74,3 +88,4 @@ CSS Document
     border-radius: 7px;
     padding: 2px 15px 2px 15px;
 }
+

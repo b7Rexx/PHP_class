@@ -1,15 +1,14 @@
 <?php
 session_start();
 
-if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
+if (isset($_SESSION['username'])|| isset($_COOKIE['user'])) {
     header('Location: welcome.php?alreadyLoggedIn');
     die;
 }
 
-if(!empty($_POST)) {
+if (!empty($_POST)) {
     $login_name = $_POST['name_login'];
     $login_pass = $_POST['pass_login'];
-
     $login_check = $login_name . "=username&password=" . $login_pass . "\n";
 
     $handle = fopen('user_pass.txt', 'r');
@@ -19,18 +18,24 @@ if(!empty($_POST)) {
         $i = 0;
         while ($i < count($user_pass)) {
             if ($login_check == $user_pass[$i]) {
-                $_SESSION['username'] = $login_name;
-                $_SESSION['password'] = $login_pass;
-                header('Location: welcome.php?loginSuccess');
-                die;
+                if (!isset($_POST['remember'])) {
+                    $_SESSION['username'] = $login_name;
+                    $_SESSION['password'] = $login_pass;
+                    header('Location: welcome.php?loginSession');
+                    die;
+                } else {
+                    setcookie('user', $login_name, time() + 86400);
+                    setcookie('pass', $login_pass, time() + 86400);
+                    header('Location: welcome.php?loginCookie');
+                    die;
+                }
             }
             $i++;
         }
         header('Location: login.php?failedToLogin');
         setcookie('message', 'Incorrect login info.', time() + 1);
     }
-}
-else{
+} else {
     header('Location: login.php?redirectedToLogin');
 }
 ?>

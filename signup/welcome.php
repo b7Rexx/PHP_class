@@ -1,7 +1,13 @@
 <?php
 session_start();
+
+//echo "<pre>";
 //print_r($_SESSION);
-if (!(isset($_SESSION['username']) && isset($_SESSION['password']))) {
+//print_r($_COOKIE);
+//die;
+//echo "</pre>";
+
+if (!(isset($_SESSION['username']) || isset($_COOKIE['user']))) {
     header('Location: login.php?loginFirst');
     die;
 }
@@ -20,17 +26,23 @@ if (!(isset($_SESSION['username']) && isset($_SESSION['password']))) {
 <body>
 <div class="welcome">
     <hr>
-    <h3>Welcome! <?= $_SESSION['username']; ?></h3>
+    <h3>Welcome! <?= (isset($_SESSION['username'])) ? $_SESSION['username'] : $_COOKIE['user']; ?></h3>
 </div>
 <form method="post" action="logout.php">
     <button class="logout " type="submit" onclick="return confirm('Are you sure?')">Logout</button>
 </form>
 
 <?php
+
 /**
- * Table to show username and password list
+ * put admin by default when all account removed
  */
-//$handle = fopen('user_pass.txt','r');
+
+if (empty(file('user_pass.txt'))) {
+    $handle = fopen('user_pass.txt', 'a');
+    fwrite($handle, "admin=username&password=admin\n");
+    fclose($handle);
+}
 $read_file = file('user_pass.txt');
 $imp = implode('=username&password=', $read_file);
 $all_admin = explode('=username&password=', $imp);
@@ -45,11 +57,19 @@ $all_admin = explode('=username&password=', $imp);
             <th>Password</th>
         </tr>
         <?php
-        for ($i = 0; $i < count($all_admin);) {
-            echo "<tr>";
-            echo "<td >{$all_admin[$i]}</td ><td>{$all_admin[$i+1]}</td >";
-            echo "</tr >";
-            $i += 2;
+        /**
+         * Table to show and remove username and password list
+         */
+
+        if (is_array($all_admin)) {
+            for ($i = 0, $j = 0; $i < count($all_admin);) {
+                echo "<tr>";
+                echo "<td >{$all_admin[$i]}</td ><td>{$all_admin[$i+1]}</td >";
+                echo "<td><a href=\"delete.php?id=" . $j . "\">&times</a></td>";
+                echo "</tr >";
+                $i += 2;
+                $j++;
+            }
         }
         ?>
     </table>

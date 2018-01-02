@@ -1,15 +1,16 @@
 <?php
 session_start();
 
+
+if (isset($_SESSION['username'])|| isset($_COOKIE['user'])) {
+    header('Location: welcome.php?alreadyLoggedIn');
+    die;
+}
+
 if(!empty($_POST)){
 $register_name = $_POST['name_register'];
 $register_pass = $_POST['pass_register'];
 $register_confirm = $_POST['confirm_register'];
-
-if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
-    header('Location: welcome.php?alreadyLoggedIn');
-    die;
-}
 
 if ($register_pass === $register_confirm) {
 
