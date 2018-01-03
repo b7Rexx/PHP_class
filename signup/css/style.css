@@ -7,7 +7,7 @@ CSS Document
     background: lightskyblue;
 }
 
-body{
+body {
     width: 1024px;
 }
 
@@ -148,4 +148,15 @@ a {
     display: none;
     padding: 6px 12px;
     border-top: none;
+}
+
+#Calculator {
+    margin-top: 30px;
+    margin-left: 25%;
+}
+
+#Calculator input, select, option {
+    text-align: right;
+    font-size: 20px;
+    padding: 5px;
 }
