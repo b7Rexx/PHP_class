@@ -65,7 +65,7 @@ if (!empty($_POST)) {
 <?php
 if(isset($output)){
     echo "The {$operator} of {$num1} and {$num2} is {$output}";
-    echo "<hr>";
+//    echo "<hr>";
 }
 ?>
 </body>

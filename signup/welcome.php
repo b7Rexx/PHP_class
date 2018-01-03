@@ -25,13 +25,22 @@ if (!(isset($_SESSION['username']) || isset($_COOKIE['user']))) {
 </head>
 <body>
 <div class="welcome">
-    <hr>
     <h3>Welcome! <?= (isset($_SESSION['username'])) ? $_SESSION['username'] : $_COOKIE['user']; ?></h3>
 </div>
 <form method="post" action="logout.php">
     <button class="logout " type="submit" onclick="return confirm('Are you sure?')">Logout</button>
 </form>
 
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Admin')">Home</button>
+    <button class="tablinks" onclick="openTab(event, 'Calculator')">Calculator</button>
+</div>
+
+<!---->
+<!--FIRST TAB (ADMIN TAB)-->
+<!---->
+
+<div id="Admin" class="tabcontent" style="display: block">
 <?php
 
 /**
@@ -74,5 +83,46 @@ $all_admin = explode('=username&password=', $imp);
         ?>
     </table>
 </div>
+</div>
+<!---->
+<!--SECOND TAB-->
+<!---->
+<div id="Calculator" class="tabcontent">
+    <form action="" method="post">
+        <input type="text" name="first" placeholder="First Number"><br>
+        <input type="text" name="second" placeholder="Second Number"><br>
+        <select name="operator" id="">
+            <option value="addition">+</option>
+            <option value="subtraction">-</option>
+            <option value="multiple">*</option>
+            <option value="quotient">/</option>
+        </select>
+        <input type="submit" value="    OK   " style="margin-left:30px ">
+    </form>
+    <br>
+    <?php
+    if(isset($output)){
+        echo "The {$operator} of {$num1} and {$num2} is {$output}";
+//    echo "<hr>";
+    }
+    ?>
+
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
 </body>
 </html>

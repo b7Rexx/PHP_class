@@ -1,13 +1,15 @@
 /*
 CSS Document
  */
-
 * {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     background: lightskyblue;
 }
 
+body{
+    width: 1024px;
+}
 
 .login {
     margin: 100px auto;
@@ -32,7 +34,7 @@ CSS Document
     text-align: center;
     background: transparent;
     border: 0;
-    border-bottom: 2px inset ;
+    border-bottom: 2px inset;
 }
 
 .login button {
@@ -42,7 +44,7 @@ CSS Document
     border: 0;
 }
 
-.login i{
+.login i {
     margin-left: 15px;
     font-size: 17px;
     opacity: 0.7;
@@ -61,7 +63,7 @@ CSS Document
 
 .welcome h3 {
     text-align: center;
-    margin-top: 100px;
+    margin: 30px;
     font-size: 50px;
     font-style: italic;
 }
@@ -76,11 +78,11 @@ CSS Document
     padding-left: 30px;
 }
 
-.admin_list a{
+.admin_list a {
     text-decoration: none;
     font-size: 30px;
     font-weight: bold;
-    color:red;
+    color: red;
 
 }
 
@@ -89,16 +91,61 @@ CSS Document
     color: red;
 }
 
-.anchor a{
+.anchor a {
     position: absolute;
-    left:40%;
-    top:60px;
+    left: 40%;
+    top: 60px;
     text-decoration: none;
     background-color: greenyellow;
     border-radius: 7px;
     padding: 2px 15px 2px 15px;
 }
 
-a{
+a {
     background: transparent;
+}
+
+/**
+*
+********TAB CSS
+**/
+
+.tab {
+    overflow: hidden;
+    background: linear-gradient(lightskyblue, darkslateblue, lightskyblue);
+    height: 55px;
+}
+
+.tab button {
+    background-color: inherit;
+    color: greenyellow;
+    font-style: italic;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 19px;
+    margin-left: 30px;
+    font-family: Cursive;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: darkblue;
+    border-radius: 35px;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: transparent;
+    opacity: 0.3;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
 }
